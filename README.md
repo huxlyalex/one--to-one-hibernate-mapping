@@ -19,44 +19,55 @@ The service supports the following primary operations:
 - Postman installed for testing APIs
 
 ## Endpoints
+
 ### 1. Add Data to Database
 **Method:** `POST`  
-**Endpoint:** `/add`  
+**Endpoint:** `http://localhost:8081/studentlaptopmapping/savestudentlaptop/onetoone`  
 **Description:** Adds data to the database.
 
 #### Request Body Example (JSON):
 ```json
 {
-  "field1": "value1",
-  "field2": "value2"
+    "rollNo": 1,
+    "name": "huxly",
+    "mark": 70,
+    "laptop": {
+        "lId": 102,
+        "lName": "Dell"
+    }
 }
 ```
 
 #### Response Example (JSON):
 ```json
 {
-  "success": true,
-  "message": "Data added successfully",
-  "id": "unique-id"
+    "success": true,
+    "message": "Data added successfully",
+    "id": 1
 }
 ```
 
 ### 2. Retrieve Data by ID
 **Method:** `GET`  
-**Endpoint:** `/get/{id}`  
+**Endpoint:** `http://localhost:8081/studentlaptopmapping/getstudent/{id}`  
 **Description:** Retrieves data from the database using the unique ID.
 
 #### Path Parameter:
-- `id`: Unique identifier for the data.
+- `id`: Unique identifier for the data (e.g., student ID).
 
 #### Response Example (JSON):
 ```json
 {
-  "success": true,
-  "data": {
-    "field1": "value1",
-    "field2": "value2"
-  }
+    "success": true,
+    "data": {
+        "rollNo": 1,
+        "name": "huxly",
+        "mark": 70,
+        "laptop": {
+            "lId": 102,
+            "lName": "Dell"
+        }
+    }
 }
 ```
 
@@ -64,9 +75,8 @@ The service supports the following primary operations:
 1. Clone the repository and set up the project in your IDE (IntelliJ recommended).
 2. Ensure the database connection details are correctly configured.
 3. Use the Postman collection to test the endpoints:
-   - Import the collection into Postman.
-   - Execute the `POST /add` request to add data.
-   - Execute the `GET /get/{id}` request to fetch data.
+   - Execute the `POST /savestudentlaptop/onetoone` request to add data.
+   - Execute the `GET /getstudent/{id}` request to fetch data.
 4. Verify responses to ensure the service is functioning as expected.
 
 ## Postman Collection
